@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt')
 
 const jobSchema = new mongoose.Schema({
     
-    Jname: {type: String, default: ''},
-    address: {type: String, default: ''},
-    salary: {type: String, default: ''},
-    experience: {type: String, default: ''},
-    workingTime: {type: String, default: ''},
-    peopleRequired: {type: String, default: ''},
+    Jname: {type: String, default: '',required:true},
+    address: {type: String, default: '',required:true},
+    salary: {type: String, default: '',required:true},
+    experience: {type: String, default: '',required:true},
+    workingTime: {type: String, default: '',required:true},
+    peopleRequired: {type: String, default: '',required:true},
     active: { type: Boolean, default: false },
     archived: { type: Boolean, default: false },
     last_login: { type: Date },

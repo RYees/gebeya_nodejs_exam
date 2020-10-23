@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const adminSchema = new mongoose.Schema({
     
     name: {type: String, default: ''},
-    username: { type: String, default: '' },
+    username: { type: String, default: '' ,required:true},
     email: { type: String, unique: true, trim: true, lowercase: true, required: true},
     password: { type: String, required: true, minlength: 8, maxlength: 128},
     password_changed_at: { type: Date },
