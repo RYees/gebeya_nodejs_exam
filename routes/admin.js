@@ -1,7 +1,7 @@
 var router = require("express-promise-router")();
 
-//const  {userFormRequest} = require('../middlewares/form-request/Aauth')
-//const { hasPermissions } = require('../middlewares/auth');
+const  {userFormRequest} = require('../middlewares/form-request/Aauth')
+const { hasPermissions } = require('../middlewares/auth');
 /**
  * Returns All Jobs
  * 
@@ -12,17 +12,15 @@ var router = require("express-promise-router")();
  */
 const adminController = require('../controllers/admin.controller')
 
-router.get('/',/* hasPermissions([ 'view broker']),*/adminController.Alljobs);
+router.get('/', hasPermissions([ 'view any job']),adminController.Alljobs);
 
-router.get('/:id',/* hasPermissions(['view broker']),*/adminController.getjob);
+router.get('/:id', hasPermissions(['view job']),adminController.getjob);
 
-router.post('/',/* hasPermissions(['create broker']) && userFormRequest('createUser'),*/ adminController.createjob);
+router.post('/', hasPermissions(['create job']) && userFormRequest('createUser'),adminController.createjob);
 
-//router.patch('/updateStatus',/* hasPermissions(['remove user']),*/adminController.updatestatus);
+router.patch('/:id', hasPermissions(['update job']), adminController.updatejob);
 
-router.patch('/:id',/* hasPermissions(['update broker']),*/ adminController.updatejob);
-
-router.delete('/:id',/* hasPermissions(['remove user']),*/adminController.removejob);
+router.delete('/:id', hasPermissions(['remove job']),adminController.removejob);
 
 
 

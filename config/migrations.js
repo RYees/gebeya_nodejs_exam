@@ -1,5 +1,6 @@
 const permissions = [
     'create job',
+    'view any job',
     'view job',
     'update job',
     'remove job',
