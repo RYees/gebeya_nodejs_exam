@@ -28,15 +28,8 @@ const admins = [
 }
 ]
 
-const jobs = [
- {   jname:"software developer",
-    address:"mexico",
-    salary: "5000",
-    workingTime:"part-time",
-    experience:"2years",
-    peopleRequired:"5"
-}
-]
+const jobs = []
+ 
 
 
 module.exports = { permissions, roles, admins,jobs}

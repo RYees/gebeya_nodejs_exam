@@ -19,8 +19,35 @@ var adminRouter = require('./routes/admin');
 
 
 var app = express();
+const expressSwagger = require('express-swagger-generator')(app);
 
-
+let options = {
+    swaggerDefinition: {
+        info: {
+            description: 'This is a nodejs-finalExam for Job Vacancy Appication',
+            title: 'Swagger',
+            version: '1.0.0',
+        },
+        host: `localhost:${port}`,
+        basePath: '/',
+        produces: [
+            "application/json",
+            
+        ],
+        schemes: ['http', 'https'],
+		securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: "",
+            }
+        }
+    },
+    basedir: __dirname, //app absolute path
+    files: ['./routes/**/*.js'] //Path to the API handle folder
+};
+expressSwagger(options)
 // open mongoose connection
 mongoose.connect();
 
